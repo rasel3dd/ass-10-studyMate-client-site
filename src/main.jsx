@@ -5,6 +5,13 @@ import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import RootLayout from './Layout/RootLayout';
 import Home from './Page/Home';
+import Login from './Page/Login';
+import Register from './Page/Register';
+import StudyCard from './Component/StudyCard';
+import Profile from './Page/MyProfile';
+import AuthProvider from './Provider/AuthProvider';
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -13,7 +20,24 @@ const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
-      }
+      },
+      {
+        path: '/login',
+        Component: Login,
+      },
+      {
+        path: '/register',
+        Component: Register,
+
+      },
+      {
+        path: '/partner',
+        Component: StudyCard,
+      },
+      {
+        path: '/profile',
+        Component: Profile,
+      },
 
     ]
   },
@@ -21,6 +45,6 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+   <AuthProvider><RouterProvider router={router} /></AuthProvider>
   </StrictMode>,
 )
