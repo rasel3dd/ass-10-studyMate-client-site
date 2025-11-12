@@ -55,6 +55,26 @@ signInGoogle().then(result => {
     
     signIn(email, password)
     .then(result => {
+      const newUser = {
+        name: result.user.displayName,
+        email: result.user.email,
+        image: result.user.photoURL,
+      }
+
+      fetch('http://localhost:5000/users', {
+        method: 'post',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(newUser)
+
+      })
+      .then (res => res.json())
+      .then(data =>{
+        console.log(data)
+      })
+
+
     const user = result.user;
     toast.success('Your password sing in successful');
     setTimeout(() => {
