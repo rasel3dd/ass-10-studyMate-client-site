@@ -10,6 +10,7 @@ import Register from './Page/Register';
 import StudyCard from './Component/StudyCard';
 import Profile from './Page/MyProfile';
 import AuthProvider from './Provider/AuthProvider';
+import StudyList from './Page/StudyList';
 
 
 const router = createBrowserRouter([
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
         path: '/profile',
         Component: Profile,
       },
+      {
+        path: '/studyList',
+        Component: StudyList,
+      }
 
     ]
   },

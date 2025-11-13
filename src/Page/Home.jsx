@@ -1,12 +1,12 @@
 import React from 'react';
-import Navber from '../Component/Navber';
+import StudyList from './StudyList';
 
+const partnerListPromise = fetch('http://localhost:5000/partner-List').
+then(res => res.json());
 const Home = () => {
     return (
         <div>
-            <nav>
-                
-            </nav>
+           <StudyList partnerListPromise = {partnerListPromise}></StudyList>
         </div>
     );
 };
