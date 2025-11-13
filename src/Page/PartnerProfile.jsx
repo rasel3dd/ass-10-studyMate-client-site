@@ -6,8 +6,37 @@ import { FaStar } from "react-icons/fa6";
   
 
 const PartnerProfile = () => {
+    
     const { id } = useParams();
-  const [partner, setPartner] = useState(null);
+    const [partner, setPartner] = useState(null);
+  const [loading, setLoading] = useState(false);
+ 
+
+
+  const handelAdd = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch('http://localhost:5000/connection', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(partner),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert(`${name} added to your connections ✅`);
+      } else {
+        alert(data.message || 'Already added!');
+      }
+    } catch (error) {
+      console.error('Error adding connection:', error);
+      alert('Failed to add connection. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+  
   useEffect(() => {
     
     fetch('http://localhost:5000/partner-List')
@@ -20,7 +49,7 @@ const PartnerProfile = () => {
   if (!partner) {
     return <p className='text-center py-10 text-gray-500'>Loading profile...</p>;
   }
-    const { name, profileimage, subject, rating, experienceLevel, availabilityTime, studyMode } = partner;
+   const { name, profileimage, subject, rating, experienceLevel, availabilityTime, studyMode } = partner;
     return (
         <div>
             <div className='w-11/12 mx-auto py-10 flex justify-center'>
@@ -78,13 +107,14 @@ const PartnerProfile = () => {
       </div>
 
      
-      <div className='flex justify-center gap-4 mt-10'>
-        <button className='px-6 py-2 rounded-full bg-linear-to-r from-green-400 to-blue-500 text-white font-semibold hover:scale-105 transition-transform duration-200 shadow-md'>
-          Message Partner
+      <div className='text-center gap-4 mt-10'>
+        <button 
+        onClick={handelAdd}
+        disabled={loading} 
+        className='px-6 py-2 rounded-full bg-linear-to-r from-green-400 to-blue-500 text-white font-semibold hover:scale-105 transition-transform duration-200 shadow-md'>
+         {loading ? 'Adding...' : 'Add Partner'}
         </button>
-        <button className='px-6 py-2 rounded-full border-2 border-green-400 text-green-500 font-semibold hover:bg-green-50 transition-all duration-200'>
-          View Study Group
-        </button>
+        
       </div>
     </div>
   </div>
