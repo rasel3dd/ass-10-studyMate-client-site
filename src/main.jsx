@@ -12,6 +12,7 @@ import Profile from './Page/MyProfile';
 import AuthProvider from './Provider/AuthProvider';
 import StudyList from './Page/StudyList';
 import PartnerProfile from './Page/PartnerProfile';
+import MyCollection from './Page/MyCollection';
 
 
 const router = createBrowserRouter([
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: '/partner/:id',
         Component: PartnerProfile,
+      },
+      {
+        path: '/connections',
+        Component: MyCollection,
       }
 
     ]

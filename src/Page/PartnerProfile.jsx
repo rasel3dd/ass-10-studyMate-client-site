@@ -25,7 +25,7 @@ const PartnerProfile = () => {
       const data = await response.json();
 
       if (response.ok) {
-        alert(`${name} added to your connections ✅`);
+        alert(`${name} added to your connections `);
       } else {
         alert(data.message || 'Already added!');
       }
