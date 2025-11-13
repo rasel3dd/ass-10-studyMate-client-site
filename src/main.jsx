@@ -11,6 +11,7 @@ import StudyCard from './Component/StudyCard';
 import Profile from './Page/MyProfile';
 import AuthProvider from './Provider/AuthProvider';
 import StudyList from './Page/StudyList';
+import PartnerProfile from './Page/PartnerProfile';
 
 
 const router = createBrowserRouter([
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: '/studyList',
         Component: StudyList,
+      },
+      {
+        path: '/partner/:id',
+        Component: PartnerProfile,
       }
 
     ]

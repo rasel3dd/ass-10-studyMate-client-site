@@ -1,8 +1,9 @@
 import React from 'react';
 import { FaStar } from "react-icons/fa6";
+import { Link } from 'react-router';
 
 const StudyCard = ({partner}) => {
-    const {name, profileimage, subject, rating, studyMode, experienceLevel} = partner;
+    const {id, name, profileimage, subject, rating, studyMode, experienceLevel} = partner;
     return (
         <div className="w-11/12 mx-auto flex justify-center py-6">
   <div className="card w-80 bg-white shadow-lg rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 border border-gray-100">
@@ -35,9 +36,11 @@ const StudyCard = ({partner}) => {
       </div>
 
       <div className="mt-5 text-center">
+        <Link to={`/partner/${id}`}>
         <button className="px-5 py-2 bg-linear-to-r from-green-400 to-blue-500  text-white rounded-full font-semibold hover:scale-105 transition-transform duration-200 shadow-md">
           View Profile
         </button>
+        </Link>
       </div>
     </div>
   </div>

@@ -32,8 +32,10 @@ const Navbar = () => {
             
             <div className='flex gap-5'>
                 <NavLink to="/">Home</NavLink>
-                <NavLink to="/partner">Partner</NavLink>
                 <NavLink to="/profile">My Profile</NavLink>
+                <NavLink to="/partner">My Connection</NavLink>
+                <NavLink to="/partner">Fine Partner</NavLink>
+                <NavLink to="/create">Create Partner Profile</NavLink>
             </div>
             <div>{user && user.email}</div>
             <div className='flex items-center'>
