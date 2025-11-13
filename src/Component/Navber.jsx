@@ -31,11 +31,31 @@ const Navbar = () => {
             
             
             <div className='flex gap-5'>
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="/profile">My Profile</NavLink>
-                <NavLink to="/connections">My Connection</NavLink>
-                <NavLink to="/">Fine Partner</NavLink>
-                <NavLink to="/createProfile">Create Partner Profile</NavLink>
+                <NavLink 
+                to="/"
+                className={({ isActive }) =>
+            isActive ? 'text-green-500 font-semibold' : 'hover:text-green-400'
+          }
+                >Home</NavLink>
+              
+    
+    
+      <NavLink to="/profile" 
+                className={({ isActive }) =>
+            isActive ? 'text-green-500 font-semibold' : 'hover:text-green-400'
+          }>My Profile</NavLink>
+      <NavLink to="/connections" 
+                className={({ isActive }) =>
+            isActive ? 'text-green-500 font-semibold' : 'hover:text-green-400'
+          }>My Connection</NavLink>
+      <NavLink to="/createProfile"
+                className={({ isActive }) =>
+            isActive ? 'text-green-500 font-semibold' : 'hover:text-green-400'
+          }>Create Partner Profile</NavLink>
+    
+
+
+
             </div>
             <div>{user && user.email}</div>
             <div className='flex items-center'>
@@ -43,7 +63,7 @@ const Navbar = () => {
                 {
                   user ? <button onClick={handleLogOut} className='btn btn-primary px-10'>LogOut</button> : <Link to="/login" className='btn btn-primary px-10'>Log In</Link>
                 }
-                <ToastContainer></ToastContainer>
+                <ToastContainer position='top-center' autoClose={1500}></ToastContainer>
             </div>
     
         </div>

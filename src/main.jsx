@@ -7,13 +7,12 @@ import RootLayout from './Layout/RootLayout';
 import Home from './Page/Home';
 import Login from './Page/Login';
 import Register from './Page/Register';
-import StudyCard from './Component/StudyCard';
-import Profile from './Page/MyProfile';
 import AuthProvider from './Provider/AuthProvider';
-import StudyList from './Page/StudyList';
 import PartnerProfile from './Page/PartnerProfile';
 import MyCollection from './Page/MyCollection';
 import CreatePartnerProfile from './Page/CreatePartnerProfile';
+import PrivateRoute from './Provider/PrivateRoute';
+import MyProfile from './Page/MyProfile';
 
 
 const router = createBrowserRouter([
@@ -37,20 +36,29 @@ const router = createBrowserRouter([
       
       {
         path: '/profile',
-        Component: Profile,
+        element: <PrivateRoute>
+          <MyProfile></MyProfile>
+        </PrivateRoute>,
       },
      
       {
         path: '/partner/:id',
-        Component: PartnerProfile,
+        element: <PrivateRoute>
+          <PartnerProfile></PartnerProfile>
+        </PrivateRoute>,
       },
       {
         path: '/connections',
-        Component: MyCollection,
+        element: <PrivateRoute>
+          <MyCollection></MyCollection>
+        </PrivateRoute>,
       },
       {
         path: '/createProfile',
-        Component: CreatePartnerProfile,
+        element: <PrivateRoute> 
+          <CreatePartnerProfile></CreatePartnerProfile>
+        </PrivateRoute>,
+
       }
 
     ]

@@ -86,9 +86,9 @@ signInGoogle().then(result => {
       })
     localStorage.setItem("user", JSON.stringify(newUser));
     toast.success('Your password sing in successful');
-    setTimeout(() => {
-  navigate(location.state ? location.state : '/');
-}, 1500);
+    setTimeout(() =>{
+      navigate(`${location.state ? location.state : '/'}`);
+    },1500);
     
     })
     .catch((error) => {
@@ -182,7 +182,7 @@ signInGoogle().then(result => {
     </div>
   </form>
 
-  <ToastContainer />
+  <ToastContainer position='top-center' autoClose={1500}/>
 </div>
 
     );
