@@ -33,10 +33,21 @@ resetPassword(email)
   const handleGoogle = () =>{
 signInGoogle().then(result => {
     const user = result.user;
+     const newUser = {
+          name: user.displayName,
+          email: user.email,
+          image: user.photoURL,
+        };
+           fetch('http://localhost:5000/users', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newUser),
+        });
+         localStorage.setItem("user", JSON.stringify(newUser));
     
     toast.success('Your password Google sing in successful');
     setTimeout(() =>{
-      navigate(`${location.state ? location.state : "/"}`);
+      navigate(`${location.state ? location.state : '/'}`);
     },1500);
     })
     .catch((error) => {
@@ -73,12 +84,10 @@ signInGoogle().then(result => {
       .then(data =>{
         console.log(data)
       })
-
-
-    const user = result.user;
+    localStorage.setItem("user", JSON.stringify(newUser));
     toast.success('Your password sing in successful');
     setTimeout(() => {
-  navigate(location.state ? location.state : "/");
+  navigate(location.state ? location.state : '/');
 }, 1500);
     
     })
@@ -91,55 +100,91 @@ signInGoogle().then(result => {
 
   };
     return (
-         <div className='flex justify-center items-center min-h-screen'>
-          <form onSubmit={handleLogin} className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-            <h1 className='text-xl text-center font-semibold pt-5'> <span className='text-green-500'>Welcome</span> Login Your Account</h1>
-      <div className="card-body ">
-        <fieldset className="fieldset ">
-          <label className="label">Email</label>
-          <input name='email' type="email" className="input" placeholder="Email" required />
-          <label className="label">Password</label>
-          <div className='relative'>
-            <input
-           name='password'
-            type={show ? "text" : "password"} 
-            className="input" placeholder="Password" required />
-          <span
-          onClick={() => setShow(!show)}
-          className='absolute right-7 top-3 cursor-pointer '> 
-            {
-              show ? <FaEyeSlash /> : <FaEye />
-            }
-            
-          </span>
-          </div>
-          <div><button onClick={handleForget} type='button' className="link link-hover">Forgot password?</button></div>
-          {
-            error && <p className='text-red-500 text-sm'>{error}</p>
-          }
-          {
-            resetMessage && <p className='text-green-600 text-sm'>{resetMessage}</p>
-          }
-         
+         <div class='min-h-screen flex items-center justify-center bg-linear-to-br from-gray-100 to-gray-200 px-4'>
+  <form
+    onSubmit={handleLogin}
+    class='bg-white/90 backdrop-blur-sm w-full max-w-md shadow-2xl rounded-2xl overflow-hidden'
+  >
+    <div class='p-8'>
+      <h1 class='text-2xl font-bold text-center mb-6'>
+        <span class='text-green-500'>Welcome</span> — Login to Your Account
+      </h1>
 
-          <button type='submit' className="btn btn-neutral mt-4">Login</button>
-          <button 
-          type='button'
-          onClick={handleGoogle}
-          className='btn btn-success btn-outline w-full cursor-pointer'
-          > <FcGoogle size={24} /> Login with Google</button>
-           <div className='flex justify-center items-center mt-4'>
-            <p>Don't ave account ? Create an account click - </p>
-           <Link to='/register'>
-          <button className='text-sm text-red-500 font-medium'>Register</button>
-          </Link>
-          </div>
-         
-        </fieldset>
+      <div class='form-control mb-4'>
+        <label class='label'>
+          <span class='label-text font-medium'>Email</span>
+        </label>
+        <input
+          name='email'
+          type='email'
+          placeholder='Enter your email'
+          class='input input-bordered w-full'
+          required
+        />
       </div>
-    </form>
-    <ToastContainer />
-         </div>
+
+      <div class='form-control mb-2'>
+        <label class='label'>
+          <span class='label-text font-medium'>Password</span>
+        </label>
+        <div class='relative'>
+          <input
+            name='password'
+            type={show ? 'text' : 'password'}
+            placeholder='Enter your password'
+            class='input input-bordered w-full pr-10'
+            required
+          />
+          <span
+            onClick={() => setShow(!show)}
+            class='absolute right-3 top-3 text-gray-500 hover:text-gray-700 cursor-pointer'
+          >
+            {show ? <FaEyeSlash /> : <FaEye />}
+          </span>
+        </div>
+      </div>
+
+      <div class='text-right mb-3'>
+        <button
+          type='button'
+          onClick={handleForget}
+          class='text-sm text-blue-600 hover:underline'
+        >
+          Forgot password?
+        </button>
+      </div>
+
+      {error && <p class='text-red-500 text-sm mb-2'>{error}</p>}
+      {resetMessage && <p class='text-green-600 text-sm mb-2'>{resetMessage}</p>}
+
+      <button type='submit' class='btn btn-neutral w-full mt-2'>
+        Login
+      </button>
+
+      <div class='divider text-sm text-gray-400'>OR</div>
+
+      <button
+        type='button'
+        onClick={handleGoogle}
+        class='btn btn-outline btn-success w-full flex items-center justify-center gap-2'
+      >
+        <FcGoogle size={22} /> Login with Google
+      </button>
+
+      <div class='mt-6 text-center text-sm'>
+        <p class='text-gray-600'>
+          Don't have an account?{' '}
+          <Link to='/register' class='text-red-500 hover:underline font-medium'>
+            Register here
+          </Link>
+        </p>
+      </div>
+    </div>
+  </form>
+
+  <ToastContainer />
+</div>
+
     );
 };
 

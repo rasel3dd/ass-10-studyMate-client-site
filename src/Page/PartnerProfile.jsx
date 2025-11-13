@@ -10,10 +10,11 @@ const PartnerProfile = () => {
     const { id } = useParams();
     const [partner, setPartner] = useState(null);
   const [loading, setLoading] = useState(false);
- 
+ const [added, setAdded] = useState(false);
 
 
   const handelAdd = async () => {
+    if (added) return;
     setLoading(true);
     try {
       const response = await fetch('http://localhost:5000/connection', {
@@ -26,8 +27,10 @@ const PartnerProfile = () => {
 
       if (response.ok) {
         alert(`${name} added to your connections `);
+        setAdded(true);
       } else {
         alert(data.message || 'Already added!');
+        setAdded(true);
       }
     } catch (error) {
       console.error('Error adding connection:', error);
@@ -110,9 +113,13 @@ const PartnerProfile = () => {
       <div className='text-center gap-4 mt-10'>
         <button 
         onClick={handelAdd}
-        disabled={loading} 
-        className='px-6 py-2 rounded-full bg-linear-to-r from-green-400 to-blue-500 text-white font-semibold hover:scale-105 transition-transform duration-200 shadow-md'>
-         {loading ? 'Adding...' : 'Add Partner'}
+        disabled={loading || added} 
+        className={`px-6 py-2 rounded-full font-semibold transition-transform duration-200 shadow-md
+                ${added
+                  ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
+                  : 'bg-linear-to-r from-green-400 to-blue-500 text-white hover:scale-105'}
+              `}>
+         {added ? 'Added' : loading ? 'Adding...' : 'Add Partner'}
         </button>
         
       </div>

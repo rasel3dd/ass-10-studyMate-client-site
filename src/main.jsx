@@ -13,6 +13,7 @@ import AuthProvider from './Provider/AuthProvider';
 import StudyList from './Page/StudyList';
 import PartnerProfile from './Page/PartnerProfile';
 import MyCollection from './Page/MyCollection';
+import CreatePartnerProfile from './Page/CreatePartnerProfile';
 
 
 const router = createBrowserRouter([
@@ -33,18 +34,12 @@ const router = createBrowserRouter([
         Component: Register,
 
       },
-      {
-        path: '/partner',
-        Component: StudyCard,
-      },
+      
       {
         path: '/profile',
         Component: Profile,
       },
-      {
-        path: '/studyList',
-        Component: StudyList,
-      },
+     
       {
         path: '/partner/:id',
         Component: PartnerProfile,
@@ -52,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: '/connections',
         Component: MyCollection,
+      },
+      {
+        path: '/createProfile',
+        Component: CreatePartnerProfile,
       }
 
     ]
