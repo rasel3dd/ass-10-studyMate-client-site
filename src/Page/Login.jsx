@@ -47,8 +47,7 @@ signInGoogle().then(result => {
     
     toast.success('Your password Google sing in successful');
     setTimeout(() =>{
-      navigate(`${location.state ? location.state : '/'}`);
-    },1500);
+      navigate(`${location.state ? location.state : '/'}`);},1500);
     })
     .catch((error) => {
     const errorCode = error.code;
@@ -87,8 +86,7 @@ signInGoogle().then(result => {
     localStorage.setItem("user", JSON.stringify(newUser));
     toast.success('Your password sing in successful');
     setTimeout(() =>{
-      navigate(`${location.state ? location.state : '/'}`);
-    },1500);
+      navigate(`${location.state ? location.state : '/'}`);}, 1500);
     
     })
     .catch((error) => {
