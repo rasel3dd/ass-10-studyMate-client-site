@@ -14,7 +14,7 @@ const MyProfile = () => {
         );
     }
     return (
-        <div>
+        
   <div className='flex justify-center items-center min-h-screen bg-gray-50'>
     <div className='bg-white rounded-2xl shadow-lg p-8 text-center w-full max-w-sm'>
       <img
@@ -43,7 +43,7 @@ const MyProfile = () => {
         </Link>
       </div>
     </div>
-  </div>
+  
 </div>
     );
 };

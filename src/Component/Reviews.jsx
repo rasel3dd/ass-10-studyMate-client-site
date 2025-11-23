@@ -28,8 +28,8 @@ avatar: 'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=400&auto=fo
 ]
 const Reviews = () => {
     return (
-        <div>
-            <section className='max-w-5xl mx-auto px-4 py-14'>
+        
+            <div className='max-w-5xl mx-auto px-4 py-14'>
 <h2 className='text-2xl font-bold text-center mb-10'>● Testimonials / Reviews</h2>
 
 
@@ -46,8 +46,8 @@ className='w-20 h-20 object-cover rounded-full mx-auto mb-4'
 </div>
 ))}
 </div>
-</section>
-        </div>
+</div>
+        
     );
 };
 

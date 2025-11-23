@@ -3,7 +3,7 @@ import { ImFacebook2 } from "react-icons/im";
 import { FaYoutubeSquare } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 const Footer = () => {
-    return (
+return (
  <footer className='w-full bg-green-950 rounded-t-2xl py-6'>
   <div className='w-11/12 mx-auto grid md:grid-cols-4 gap-10'>
     <div className='flex flex-col gap-3'>

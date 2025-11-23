@@ -17,7 +17,7 @@ const PartnerProfile = () => {
     if (added) return;
     setLoading(true);
     try {
-      const response = await fetch('https://study-mate-bice.vercel.app/connection', {
+      const response = await fetch("https://study-mate-bice.vercel.app/connection", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(partner),
@@ -42,7 +42,7 @@ const PartnerProfile = () => {
   
   useEffect(() => {
     
-    fetch('https://study-mate-bice.vercel.app/partner')
+    fetch("https://study-mate-bice.vercel.app/partner")
       .then((res) => res.json())
       .then((data) => {
         const found = data.find((item) => item.id === id);
@@ -54,7 +54,6 @@ const PartnerProfile = () => {
   }
    const { name, profileimage, subject, rating, experienceLevel, availabilityTime, studyMode } = partner;
     return (
-        <div>
             <div className='w-11/12 mx-auto py-10 flex justify-center'>
   <div className='bg-white rounded-3xl shadow-lg overflow-hidden w-full max-w-4xl border border-gray-100 hover:shadow-2xl transition-all duration-300'>
     <div className='relative bg-linear-to-r from-green-400 to-blue-500 h-40'>
@@ -128,7 +127,6 @@ const PartnerProfile = () => {
   </div>
 </div>
 
-        </div>
     );
 };
 

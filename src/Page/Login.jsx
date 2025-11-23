@@ -49,7 +49,7 @@ const Login = () => {
           image: user.photoURL,
         };
 
-        fetch('https://study-mate-bice.vercel.app/users', {
+        fetch("https://study-mate-bice.vercel.app/users", {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(newUser),
@@ -91,7 +91,7 @@ const Login = () => {
           image: result.user.photoURL,
         };
 
-        fetch('https://study-mate-bice.vercel.app/users', {
+        fetch("https://study-mate-bice.vercel.app/users", {
           method: 'post',
           headers: { 'content-type': 'application/json' },
           body: JSON.stringify(newUser)
