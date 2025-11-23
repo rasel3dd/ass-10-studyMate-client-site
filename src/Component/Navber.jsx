@@ -21,53 +21,114 @@ const Navbar = () => {
 
     }
     return (
-        <div className='w-11/12 mx-auto flex justify-between items-center'>
-          
-          <div className='flex justify-center items-center'>
-            <img className='w-25' src={navImag} alt="" />
-            <h1 className='text-green-400 font-bold text-xl'>Tree plant</h1>
-          </div>
-            
-            
-            
-            <div className='flex gap-5'>
-                <NavLink 
-                to="/"
-                className={({ isActive }) =>
-            isActive ? 'text-green-500 font-semibold' : 'hover:text-green-400'
-          }
-                >Home</NavLink>
-              
+       <div class='w-full bg-linear-to-r from-green-50 to-white shadow-lg'>
+  <div class='w-11/12 mx-auto py-4 flex items-center justify-between'>
+
+    <div class='flex items-center gap-3'>
+      <div class='p-1 rounded-xl bg-white shadow-inner'>
+        <img src={navImag} alt='' class='w-14 h-14 rounded-xl shadow-md' />
+      </div>
+      <h1 class='text-3xl font-extrabold bg-linear-to-r from-green-600 to-green-800 text-transparent bg-clip-text'>
+        StudyMate
+      </h1>
+    </div>
+
+    <div class='hidden md:flex gap-4 text-lg font-medium'>
+      <NavLink
+        to='/'
+        class={({ isActive }) =>
+          isActive
+            ? 'text-green-700 font-semibold pb-1 border-b-2 border-green-700'
+            : 'hover:text-green-600 hover:scale-105 transition-all'
+        }
+      >
+        Home
+      </NavLink>
+      <NavLink
+        to='/find-partner'
+        class={({ isActive }) =>
+          isActive
+            ? 'text-green-700 font-semibold pb-1 border-b-2 border-green-700'
+            : 'hover:text-green-600 hover:scale-105 transition-all'
+        }
+      >
+        Find Partners
+      </NavLink>
+
+      {user && (
     
-    
-      <NavLink to="/profile" 
-                className={({ isActive }) =>
-            isActive ? 'text-green-500 font-semibold' : 'hover:text-green-400'
-          }>My Profile</NavLink>
-      <NavLink to="/connections" 
-                className={({ isActive }) =>
-            isActive ? 'text-green-500 font-semibold' : 'hover:text-green-400'
-          }>My Connection</NavLink>
-      <NavLink to="/createProfile"
-                className={({ isActive }) =>
-            isActive ? 'text-green-500 font-semibold' : 'hover:text-green-400'
-          }>Create Partner Profile</NavLink>
-    
+      <div className='flex items-center gap-4'>
+        <NavLink
+        to='/profile'
+        class={({ isActive }) =>
+          isActive
+            ? 'text-green-700 font-semibold pb-1 border-b-2 border-green-700'
+            : 'hover:text-green-600 hover:scale-105 transition-all'
+        }
+      >
+        My Profile
+      </NavLink>
+
+      <NavLink
+        to='/connections'
+        class={({ isActive }) =>
+          isActive
+            ? 'text-green-700 font-semibold pb-1 border-b-2 border-green-700'
+            : 'hover:text-green-600 hover:scale-105 transition-all'
+        }
+      >
+        Connections
+      </NavLink>
+
+      <NavLink
+        to='/createProfile'
+        class={({ isActive }) =>
+          isActive
+            ? 'text-green-700 font-semibold pb-1 border-b-2 border-green-700'
+            : 'hover:text-green-600 hover:scale-105 transition-all'
+        }
+      >
+        Create Profile
+      </NavLink>
+      </div>
+   
+  )}
+    </div>
+
+    <div class='flex items-center gap-5'>
+      <p class='hidden md:block text-sm text-gray-700'>
+        {user && user.email}
+      </p>
+
+      <Link to='/profile'>
+        <img
+          src={user ? user.photoURL : userImg}
+          alt=''
+          class='w-12 h-12 rounded-full border-2 border-green-600 shadow-md hover:scale-105 transition'
+        />
+      </Link>
+
+      {user ? (
+        <button
+          onClick={handleLogOut}
+          class='px-6 py-2 rounded-xl bg-green-600 text-white font-semibold shadow hover:bg-green-700 hover:shadow-lg transition-all'
+        >
+          Logout
+        </button>
+      ) : (
+        <Link
+          to='/login'
+          class='px-6 py-2 rounded-xl bg-green-600 text-white font-semibold shadow hover:bg-green-700 hover:shadow-lg transition-all'
+        >
+          Login
+        </Link>
+      )}
+    </div>
+<ToastContainer></ToastContainer>
+  </div>
+</div>
 
 
-
-            </div>
-            <div>{user && user.email}</div>
-            <div className='flex items-center'>
-                <Link to="/profile"><img className='w-12 h-12 rounded-full' src={`${user ? user.photoURL : userImg}`} alt="" /></Link>
-                {
-                  user ? <button onClick={handleLogOut} className='btn btn-primary px-10'>LogOut</button> : <Link to="/login" className='btn btn-primary px-10'>Log In</Link>
-                }
-                <ToastContainer position='top-center' autoClose={1500}></ToastContainer>
-            </div>
-    
-        </div>
-        
     );
 };
 

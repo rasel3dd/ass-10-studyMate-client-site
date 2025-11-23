@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { Link, useParams } from 'react-router';
 import { FaStar } from "react-icons/fa6";
 
 
@@ -42,7 +42,7 @@ const PartnerProfile = () => {
   
   useEffect(() => {
     
-    fetch('http://localhost:5000/partner-List')
+    fetch('http://localhost:5000/partner')
       .then((res) => res.json())
       .then((data) => {
         const found = data.find((item) => item.id === id);
@@ -111,7 +111,8 @@ const PartnerProfile = () => {
 
      
       <div className='text-center gap-4 mt-10'>
-        <button 
+       <Link to='/connections'>
+               <button 
         onClick={handelAdd}
         disabled={loading || added} 
         className={`px-6 py-2 rounded-full font-semibold transition-transform duration-200 shadow-md
@@ -121,8 +122,8 @@ const PartnerProfile = () => {
               `}>
          {added ? 'Added' : loading ? 'Adding...' : 'Add Partner'}
         </button>
-        
-      </div>
+       </Link> 
+         </div>
     </div>
   </div>
 </div>

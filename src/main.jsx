@@ -13,6 +13,7 @@ import MyCollection from './Page/MyCollection';
 import CreatePartnerProfile from './Page/CreatePartnerProfile';
 import PrivateRoute from './Provider/PrivateRoute';
 import MyProfile from './Page/MyProfile';
+import FIndPartner from './Page/FIndPartner';
 
 
 const router = createBrowserRouter([
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
           <CreatePartnerProfile></CreatePartnerProfile>
         </PrivateRoute>,
 
+      },
+      {
+        path: '/find-partner',
+        element: <FIndPartner></FIndPartner>,
       }
 
     ]

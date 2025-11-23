@@ -50,7 +50,7 @@ const CreatePartnerProfile = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/partner", {
+      const response = await fetch("http://localhost:5000/topList", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newProfile),
@@ -60,7 +60,11 @@ const CreatePartnerProfile = () => {
 
       if (response.ok) {
         alert("Partner profile created successfully!");
-        navigate(`/partner/${data.insertedId}`);
+        // navigate(`//${data.insertedId}`);
+        setTimeout(() => {
+    navigate('/');
+  }, 1000); 
+        
       } else {
         setError(data.message || "Failed to create profile.");
       }
