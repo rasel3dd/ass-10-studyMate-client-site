@@ -63,87 +63,82 @@ setUser(user);
     });
 };
     return (
-        <div class='min-h-screen flex items-center justify-center bg-linear-to-br from-gray-100 to-gray-200 px-4'>
-  <div class='bg-white/90 backdrop-blur-sm w-full max-w-md shadow-2xl rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-[1.02]'>
-    <form onSubmit={handleRegister} class='card-body p-8'>
-      <h1 class='text-2xl font-bold text-center mb-6'>
-        <span class='text-green-500'>Create</span> Your Account
+        <div className='min-h-screen flex items-center justify-center bg-linear-to-br from-gray-100 to-gray-200 px-4'>
+  <div className='bg-white/90 backdrop-blur-sm w-full max-w-md shadow-2xl rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-[1.02]'>
+    <form onSubmit={handleRegister} className='card-body p-8'>
+      <h1 className='text-2xl font-bold text-center mb-6'>
+        <span className='text-green-500'>Create</span> Your Account
       </h1>
 
-      <fieldset class='fieldset space-y-3'>
+      <fieldset className='fieldset space-y-3'>
 
         <div>
-          <label class='label font-medium'>Name</label>
+          <label className='label font-medium'>Name</label>
           <input
             name='name'
             type='text'
-            class='input input-bordered w-full'
+            className='input input-bordered w-full'
             placeholder='Enter your name'
             required
           />
           {nameError && (
-            <p class='text-red-500 text-sm mt-1'>{nameError}</p>
+            <p className='text-red-500 text-sm mt-1'>{nameError}</p>
           )}
         </div>
 
-        
         <div>
-          <label class='label font-medium'>Photo URL</label>
+          <label className='label font-medium'>Photo URL</label>
           <input
             name='photo'
             type='text'
-            class='input input-bordered w-full'
+            className='input input-bordered w-full'
             placeholder='Enter your photo URL'
             required
           />
         </div>
 
-        
         <div>
-          <label class='label font-medium'>Email</label>
+          <label className='label font-medium'>Email</label>
           <input
             name='email'
             type='email'
-            class='input input-bordered w-full'
+            className='input input-bordered w-full'
             placeholder='Enter your email'
             required
           />
         </div>
 
-        
         <div>
-          <label class='label font-medium'>Password</label>
-          <div class='relative'>
+          <label className='label font-medium'>Password</label>
+          <div className='relative'>
             <input
               name='password'
               type={show ? 'text' : 'password'}
-              class='input input-bordered w-full pr-10'
+              className='input input-bordered w-full pr-10'
               placeholder='Enter your password'
               required
             />
             <span
               onClick={() => setShow(!show)}
-              class='absolute right-3 top-3 text-gray-500 hover:text-gray-700 cursor-pointer'
+              className='absolute right-3 top-3 text-gray-500 hover:text-gray-700 cursor-pointer'
             >
               {show ? <FaEyeSlash /> : <FaEye />}
             </span>
           </div>
           {passwordError && (
-            <p class='text-red-500 text-sm mt-1'>{passwordError}</p>
+            <p className='text-red-500 text-sm mt-1'>{passwordError}</p>
           )}
         </div>
 
-        
-        <button type='submit' class='btn btn-neutral w-full mt-4'>
+        <button type='submit' className='btn btn-neutral w-full mt-4'>
           Register
         </button>
       </fieldset>
 
-      
-      <div class='text-center mt-5 text-sm'>
-        <p class='text-gray-600'>
+      <div className='text-center mt-5 text-sm'>
+        <p className='text-gray-600'>
           Already have an account?{' '}
-          <Link to='/login' class='text-red-500 hover:underline font-medium'>
+          <Link to='/login' className='text-red-500 hover:underline font-medium'>
             Login here
           </Link>
         </p>
@@ -153,6 +148,7 @@ setUser(user);
 
   <ToastContainer />
 </div>
+
 
         
     );

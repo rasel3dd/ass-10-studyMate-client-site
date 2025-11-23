@@ -17,7 +17,7 @@ const PartnerProfile = () => {
     if (added) return;
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/connection', {
+      const response = await fetch('https://study-mate-bice.vercel.app/connection', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(partner),
@@ -42,7 +42,7 @@ const PartnerProfile = () => {
   
   useEffect(() => {
     
-    fetch('http://localhost:5000/partner')
+    fetch('https://study-mate-bice.vercel.app/partner')
       .then((res) => res.json())
       .then((data) => {
         const found = data.find((item) => item.id === id);

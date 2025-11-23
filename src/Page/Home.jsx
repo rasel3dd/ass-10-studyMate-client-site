@@ -4,7 +4,7 @@ import HeroSection from './HeroSection';
 import HowWork from '../Component/HowWork';
 import Reviews from '../Component/Reviews';
 
-const partnerListPromise = fetch('http://localhost:5000/topList').then(res => res.json());
+const partnerListPromise = fetch("https://study-mate-bice.vercel.app/topList").then(res => res.json());
 const Home = () => {
     return (
         <div>

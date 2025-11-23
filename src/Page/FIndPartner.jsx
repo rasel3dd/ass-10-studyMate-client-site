@@ -1,7 +1,7 @@
 import React, { use } from 'react';
 import FinePartnerCard from './FinePartnerCard';
 
-const findPartnerPromise = fetch('http://localhost:5000/partner').then(res => res.json());
+const findPartnerPromise = fetch("https://study-mate-bice.vercel.app/partner").then(res => res.json());
 
 const FIndPartner = () => {
     const partners = use(findPartnerPromise);

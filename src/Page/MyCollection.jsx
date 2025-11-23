@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../Provider/AuthProvider";
+import React, { useEffect, useState } from "react";
+
 
 const MyCollection = () => {
-  const { user } = useContext(AuthContext);
+  
   const [connections, setConnections] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5000/connection")
+    fetch("https://study-mate-bice.vercel.app/connection")
     .then((res) => res.json())
     .then((data) => setConnections(data))
       .catch((err) => console.error(err));
@@ -20,7 +20,7 @@ const MyCollection = () => {
     );
     if (!confirmDelete) return;
 
-    fetch(`http://localhost:5000/connection/${id}`, { method: "DELETE" })
+    fetch(`https://study-mate-bice.vercel.app/connection/${id}`, { method: "DELETE" })
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {
@@ -44,7 +44,7 @@ const MyCollection = () => {
       subject: e.target.subject.value,
     };
 
-    fetch(`http://localhost:5000/connection/${selectedUser._id}`, {
+    fetch(`https://study-mate-bice.vercel.app/connection/${selectedUser._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedInfo),

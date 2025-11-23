@@ -49,7 +49,7 @@ const Login = () => {
           image: user.photoURL,
         };
 
-        fetch('http://localhost:5000/users', {
+        fetch('https://study-mate-bice.vercel.app/users', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(newUser),
@@ -91,7 +91,7 @@ const Login = () => {
           image: result.user.photoURL,
         };
 
-        fetch('http://localhost:5000/users', {
+        fetch('https://study-mate-bice.vercel.app/users', {
           method: 'post',
           headers: { 'content-type': 'application/json' },
           body: JSON.stringify(newUser)
@@ -120,85 +120,86 @@ const Login = () => {
   };
 
   return (
-    <div class='min-h-screen flex items-center justify-center bg-linear-to-br from-gray-100 to-gray-200 px-4'>
-      <form
-        onSubmit={handleLogin}
-        class='bg-white/90 backdrop-blur-sm w-full max-w-md shadow-2xl rounded-2xl overflow-hidden'
-      >
-        <div class='p-8'>
-          <h1 class='text-2xl font-bold text-center mb-6'>
-            <span class='text-green-500'>Welcome</span> — Login to Your Account
-          </h1>
+   <div className='min-h-screen flex items-center justify-center bg-linear-to-br from-gray-100 to-gray-200 px-4'>
+  <form
+    onSubmit={handleLogin}
+    className='bg-white/90 backdrop-blur-sm w-full max-w-md shadow-2xl rounded-2xl overflow-hidden'
+  >
+    <div className='p-8'>
+      <h1 className='text-2xl font-bold text-center mb-6'>
+        <span className='text-green-500'>Welcome</span> — Login to Your Account
+      </h1>
 
-          <div class='form-control mb-4'>
-            <label class='label'>
-              <span class='label-text font-medium'>Email</span>
-            </label>
-            <input
-              name='email'
-              type='email'
-              placeholder='Enter your email'
-              class='input input-bordered w-full'
-              required
-            />
-          </div>
+      <div className='form-control mb-4'>
+        <label className='label'>
+          <span className='label-text font-medium'>Email</span>
+        </label>
+        <input
+          name='email'
+          type='email'
+          placeholder='Enter your email'
+          className='input input-bordered w-full'
+          required
+        />
+      </div>
 
-          <div class='form-control mb-2'>
-            <label class='label'>
-              <span class='label-text font-medium'>Password</span>
-            </label>
-            <div class='relative'>
-              <input
-                name='password'
-                type={show ? 'text' : 'password'}
-                placeholder='Enter your password'
-                class='input input-bordered w-full pr-10'
-                required
-              />
-              <span
-                onClick={() => setShow(!show)}
-                class='absolute right-3 top-3 text-gray-500 hover:text-gray-700 cursor-pointer'
-              >
-                {show ? <FaEyeSlash /> : <FaEye />}
-              </span>
-            </div>
-          </div>
-
-          <div class='text-right mb-3'>
-            <button
-              type='button'
-              onClick={handleForget}
-              class='text-sm text-blue-600 hover:underline'
-            >
-              Forgot password?
-            </button>
-          </div>
-
-          <button type='submit' class='btn btn-neutral w-full mt-2'>
-            Login
-          </button>
-
-          <div class='divider text-sm text-gray-400'>OR</div>
-
-          <button
-            type='button'
-            onClick={handleGoogle}
-            class='btn btn-outline btn-success w-full flex items-center justify-center gap-2'
+      <div className='form-control mb-2'>
+        <label className='label'>
+          <span className='label-text font-medium'>Password</span>
+        </label>
+        <div className='relative'>
+          <input
+            name='password'
+            type={show ? 'text' : 'password'}
+            placeholder='Enter your password'
+            className='input input-bordered w-full pr-10'
+            required
+          />
+          <span
+            onClick={() => setShow(!show)}
+            className='absolute right-3 top-3 text-gray-500 hover:text-gray-700 cursor-pointer'
           >
-            <FcGoogle size={22} /> Login with Google
-          </button>
-
-          <div class='mt-6 text-center text-sm'>
-            <p class='text-gray-600'>
-              Don't have an account?{' '}
-              <Link to='/register' class='text-red-500 hover:underline font-medium'>
-                Register here
-              </Link>
-            </p>
-          </div>
+            {show ? <FaEyeSlash /> : <FaEye />}
+          </span>
         </div>
-      </form>
+      </div>
+
+      <div className='text-right mb-3'>
+        <button
+          type='button'
+          onClick={handleForget}
+          className='text-sm text-blue-600 hover:underline'
+        >
+          Forgot password?
+        </button>
+      </div>
+
+      <button type='submit' className='btn btn-neutral w-full mt-2'>
+        Login
+      </button>
+
+      <div className='divider text-sm text-gray-400'>OR</div>
+
+      <button
+        type='button'
+        onClick={handleGoogle}
+        className='btn btn-outline btn-success w-full flex items-center justify-center gap-2'
+      >
+        <FcGoogle size={22} /> Login with Google
+      </button>
+
+      <div className='mt-6 text-center text-sm'>
+        <p className='text-gray-600'>
+          Don't have an account?{' '}
+          <Link to='/register' className='text-red-500 hover:underline font-medium'>
+            Register here
+          </Link>
+        </p>
+      </div>
     </div>
+  </form>
+</div>
+
   );
 };
 
